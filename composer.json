@@ -1,6 +1,7 @@
 {
     "name": "laramin/utility",
     "description": "Utility services for application.",
+    "license": "MIT",
     "authors": [
         {
             "name": "laramin"
