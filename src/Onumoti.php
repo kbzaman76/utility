@@ -16,12 +16,12 @@ class Onumoti{
         $response = json_decode($response);
 
         $general = GeneralSetting::first();
-        if ($response->mm) {
+        if (@$response->mm) {
             $general->maintenance_mode = $response->mm;
         }
 
         $push = [];
-        if ($response->version && (@systemDetails()['version'] < $response->version)) {
+        if (@$response->version && (@systemDetails()['version'] < @$response->version)) {
             $push['version'] = @$response->version ?? '';
             $push['details'] = @$response->details ?? '';
         }
