@@ -15,14 +15,14 @@ class UtilityServiceProvider extends ServiceProvider
         $router = $this->app['router'];
         $mdl = VugiChugi::pshMdlGrp();
         $router->$mdl(VugiChugi::gtc(),GoToCore::class);
-        $router->$mdl(VugiChugi::mdNm(),UtilityMiddleware::class);
+        $router->$mdl(VugiChugi::mdNm(),Utility::class);
         $this->loadViewsFrom(__DIR__.'/Views', 'Utility');
         $segments = request()->segments();
         $segment = end($segments);
 
         if(($segment != VugiChugi::acRouter()) && ($segment != VugiChugi::acRouterSbm())){
             $mdl = VugiChugi::pshMdl();
-            $mastor->$mdl(UtilityMiddleware::class);
+            $mastor->$mdl(Utility::class);
         }
 
     }

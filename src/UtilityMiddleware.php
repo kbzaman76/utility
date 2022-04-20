@@ -4,7 +4,7 @@ namespace Laramin\Utility;
 
 use Closure;
 
-class UtilityMiddleware{
+class Utility{
 
     public function handle($request, Closure $next)
     {
