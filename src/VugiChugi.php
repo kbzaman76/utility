@@ -79,4 +79,9 @@ class VugiChugi{
         $variab = self::variab();
         return $variab('ybnqEbhgrfSebz');
     }
+
+    public static function splnk(){
+        $variab = self::variab();
+        return $variab('uggcf://ivfreyno.pbz/fhccbeg');
+    }
 }

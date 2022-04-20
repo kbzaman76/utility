@@ -27,7 +27,7 @@ class UtilityController extends Controller{
         $response = json_decode($response);
 
         if ($response->error == 'error') {
-            return response()->json(['type'=>'error']);
+            return response()->json(['type'=>'error','message'=>$response->message]);
         }
 
         $env = $_ENV;

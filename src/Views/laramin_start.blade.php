@@ -9,13 +9,13 @@
 	<link rel="stylesheet" href="{{ asset('assets/global/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/global/css/all.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/global/css/installer.css') }}">
-	<link rel="shortcut icon" href="https://license.viserlab.com/external/favicon.png" type="image/x-icon">
+	<link rel="shortcut icon" href="{{ getImage('assets/images/logoIcon/favicon.png') }}" type="image/x-icon">
 </head>
 <body>
 	<header class="py-3 border-bottom border-primary bg--dark">
 		<div class="container">
 			<div class="d-flex align-items-center justify-content-between header gap-3">
-				<img class="logo" src="https://license.viserlab.com/external/logo.png" alt="ViserLab">
+				<img class="logo" src="{{ getImage('assets/images/logoIcon/logo.png') }}" alt="ViserLab">
 				<h3 class="title">@lang('Easy Activation')</h3>
 			</div>
 		</div>
@@ -28,6 +28,14 @@
 						<h3 class="title text-center">{{ systemDetails()['name'] }} @lang('License Activation')</h3>
                         <div class="box-item">
                             <div class="row mt-4">
+                                <div class="col-12">
+                                    <div class="alert-area alert alert-danger d-none">
+                                        <h5 class="resp-msg"></h5>
+                                        <p class="my-3">@lang('You can ask for support by creating a support ticket.')</p>
+                                        <a href="{{ Laramin\Utility\VugiChugi::splnk() }}" class="btn btn-outline-light btn-sm" target="_blank">@lang('create  ticket')</a>
+                                    </div>
+
+                                </div>
                                 <div class="col-lg-5">
                                     <div class="alert alert-success" role="alert">
                                         <p class="fs-17 mb-0">@lang('To validate your purchase details, following information will sent to ViserLab server.')</p>
@@ -96,6 +104,7 @@
 
             $('.verForm').submit(function (e) {
                 e.preventDefault();
+                $('.alert-area').addClass('d-none');
                 $('.sbmBtn').text('Processing...');
                 var url = '{{ route(Laramin\Utility\VugiChugi::acRouterSbm()) }}';
                 var data = {
@@ -108,7 +117,8 @@
                     if (response.type == 'error') {
                         $('.sbmBtn').text('Submit');
                         $('.verForm').trigger("reset");
-                        notify('error','Verification failed');
+                        $('.alert-area').removeClass('d-none');
+                        $('.resp-msg').text(response.message);
                     }else{
                         location.reload();
                     }
