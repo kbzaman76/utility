@@ -11,7 +11,14 @@ class Helpmate{
         if (!$general) {
             $general = GeneralSetting::first();
         }
-        if (!$fileExists || $general->maintenance_mode == 9 || !env('PURCHASECODE')) {
+
+        $hasPurchaseCode = cache()->get('purchase_code');
+        if (!$hasPurchaseCode) {
+            $hasPurchaseCode = env('PURCHASECODE');
+            cache()->set('purchase_code',$hasPurchaseCode);
+        }
+
+        if (!$fileExists || $general->maintenance_mode == 9 || !$hasPurchaseCode) {
             return false;
         }
 
