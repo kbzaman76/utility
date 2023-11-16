@@ -33,9 +33,12 @@ class UtilityController extends Controller{
         $env = $_ENV;
         $env['PURCHASECODE'] = $request->purchase_code;
         $envString = '';
+        $requiredEnv = ['APP_NAME', 'APP_ENV', 'APP_KEY', 'APP_DEBUG', 'APP_URL', 'LOG_CHANNEL', 'DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD','PURCHASECODE'];
         foreach($env as $k => $en){
+if(in_array($k , $requiredEnv)){
 $envString .= $k.'='.$en.'
 ';
+}
         }
 
         $envLocation = substr($response->location,3);
