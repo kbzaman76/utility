@@ -13,22 +13,16 @@ class Onumoti{
         $reqRoute = VugiChugi::lcLabRoute();
         $reqRoute = $reqRoute. systemDetails()['name'];
         $response = CurlRequest::curlPostContent($reqRoute, $param);
+
         $response = json_decode($response);
 
         $general = GeneralSetting::first();
         if (@$response->mm) {
             $general->maintenance_mode = $response->mm;
         }
-
-        $push = [];
-        if (@$response->version && (@systemDetails()['version'] < @$response->version)) {
-            $push['version'] = @$response->version ?? '';
-            $push['details'] = @$response->details ?? '';
+        if ($general->getAttribute('available_version') !== null) {
+            $general->available_version = $response->version;
         }
-        if (@$response->message) {
-            $push['message'] = @$response->message ?? [];
-        }
-        $general->system_info = $push;
         $general->save();
     }
 
