@@ -18,8 +18,12 @@ class Helpmate{
             cache()->set('purchase_code',$hasPurchaseCode);
         }
 
-        if (!$fileExists || $general->maintenance_mode == 9 || !$hasPurchaseCode) {
+        if (!$fileExists || !$hasPurchaseCode) {
             return false;
+        }
+
+        if ($general->maintenance_mode == 9) {
+            return 99;
         }
 
         return true;

@@ -9,13 +9,25 @@
 	<link rel="stylesheet" href="{{ asset('assets/global/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/global/css/all.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/global/css/installer.css') }}">
+    @php
+        $favicon = 'assets/images/logo_icon/favicon.png';
+        $logo = 'assets/images/logo_icon/logo.png';
+    @endphp
+    @if(file_exists($favicon) && is_file($favicon))
+	<link rel="shortcut icon" href="{{ getImage($favicon) }}" type="image/x-icon">
+    @else
 	<link rel="shortcut icon" href="{{ getImage('assets/images/logoIcon/favicon.png') }}" type="image/x-icon">
+    @endif
 </head>
 <body>
 	<header class="py-3 border-bottom border-primary bg--dark">
 		<div class="container">
 			<div class="d-flex align-items-center justify-content-between header gap-3">
+                @if(file_exists($logo) && is_file($logo))
+				<img class="logo" src="{{ getImage($logo) }}" alt="ViserLab">
+                @else
 				<img class="logo" src="{{ getImage('assets/images/logoIcon/logo.png') }}" alt="ViserLab">
+                @endif
 				<h3 class="title">@lang('Easy Activation')</h3>
 			</div>
 		</div>
