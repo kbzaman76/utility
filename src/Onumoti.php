@@ -15,7 +15,12 @@ class Onumoti{
         $response = CurlRequest::curlPostContent($reqRoute, $param);
 
         $response = json_decode($response);
-
+        if (!$response) {
+            $error = \Illuminate\Validation\ValidationException::withMessages([
+                'error'=>'Something went wrong'
+            ]);
+            throw $error;
+        }
         $general = GeneralSetting::first();
         if (@$response->mm) {
             $general->maintenance_mode = $response->mm;
