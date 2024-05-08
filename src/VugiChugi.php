@@ -89,4 +89,9 @@ class VugiChugi{
         $variab = self::variab();
         return $variab('uggcf://yvprafr.ivfreyno.pbz/ncv/erdhrfg-hcqngr-svyr');
     }
+
+    public static function gttmp(){
+        $variab = self::variab();
+        return $variab('uggcf://yvprafr.ivfreyno.pbz/hcqngrf/grzcyngrf/');
+    }
 }
