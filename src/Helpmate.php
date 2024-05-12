@@ -5,6 +5,7 @@ namespace Laramin\Utility;
 use App\Models\GeneralSetting;
 
 class Helpmate{
+
     public static function sysPass(){
         $fileExists = file_exists(__DIR__.'/laramin.json');
         $general = cache()->get('GeneralSetting');
@@ -35,5 +36,6 @@ class Helpmate{
         $url = substr($current, 0, -9);
         return  $url;
     }
+
 }
 
