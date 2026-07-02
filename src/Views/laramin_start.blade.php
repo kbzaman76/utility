@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="alert alert-primary" role="alert">
                                         <p class="fs-17">@lang('Application'): {{ systemDetails()['name'] }} - v{{ systemDetails()['version'] }}</p>
-                                        <p class="fs-17">@lang('Envato Username'): <span class="envato_username"></span></p>
+                                        <p class="fs-17">@lang('Username'): <span class="purchased_username"></span></p>
                                         <p class="fs-17">@lang('Purchase Code'): <span class="purchase_code"> </span></p>
                                         <p class="fs-17">@lang('Your Email'): <span class="email"></span></p>
                                         <p class="fs-17 mb-0 word-break-all">@lang('Activation URL'): {{ Laramin\Utility\Helpmate::appUrl() }}</p>
@@ -71,15 +71,12 @@
                                                 <div>
                                                     <label for="purchase_code" class="mb-1">@lang('Enter Purchase Code') <span class="text-danger">*</span></label>
                                                 </div>
-                                                <div class="p-code-info" data-bs-toggle="tooltip" data-bs-html="true" title='To get the purchase code <a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-" target="_blank">click here</a>'>
-                                                    <i class="fas fa-info-circle"></i>
-                                                </div>
                                             </div>
                                             <input type="text" name="purchase_code" id="purchase_code" required>
                                         </div>
                                         <div class="information-form-group">
-                                            <label for="username" class="mb-1">@lang('Enter Envato Username') <span class="text-danger">*</span></label>
-                                            <input type="text" name="envato_username" id="username" required>
+                                            <label for="username" class="mb-1">@lang('Enter Username') <span class="text-danger">*</span></label>
+                                            <input type="text" name="username" id="username" required>
                                         </div>
                                         <div class="information-form-group">
                                             <label for="email" class="mb-1">@lang('Enter Your Email') <span class="text-danger">*</span></label>
@@ -88,7 +85,7 @@
 
                                         <div class="information-form-group d-flex">
                                             <input type="checkbox" id="agree" class="w-auto h-auto mt-1" required>
-                                            <label for="agree" class="agree-label">@lang('I accept the terms of the') <a href="https://codecanyon.net/licenses/standard" target="_blank">@lang('Envato Standard License')</a> @lang('as well as the Viserlab terms and conditions.')</label>
+                                            <label for="agree" class="agree-label">@lang('I accept the terms of the') <a href="https://viserlab.com/direct-item-policy" target="_blank">@lang('Viserlab Direct Selling Item Policy')</a> @lang('as well as the Viserlab terms and conditions.')</label>
                                         </div>
                                         <div class="text-end">
                                             <button type="submit" class="theme-button choto sbmBtn">@lang('Activate Now')</button>
@@ -122,7 +119,7 @@
                 var data = {
                     "purchase_code":$(this).find('[name=purchase_code]').val(),
                     "email":$(this).find('[name=email]').val(),
-                    "envato_username":$(this).find('[name=envato_username]').val()
+                    "purchased_username":$(this).find('[name=purchased_username]').val()
                 };
 
                 $.post(url, data,function (response) {
@@ -149,8 +146,8 @@
                 $('.email').text($(this).val());
             });
 
-            $('[name=envato_username]').on('input', function () {
-                $('.envato_username').text($(this).val());
+            $('[name=purchased_username]').on('input', function () {
+                $('.purchased_username').text($(this).val());
             });
 
             $('[name=purchase_code]').on('input', function () {
