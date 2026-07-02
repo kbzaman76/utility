@@ -146,7 +146,7 @@
                 $('.email').text($(this).val());
             });
 
-            $('[name=purchased_username]').on('input', function () {
+            $('[name=username]').on('input', function () {
                 $('.purchased_username').text($(this).val());
             });
 
